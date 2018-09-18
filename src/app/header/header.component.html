@@ -1,7 +1,15 @@
-<nav class="navbar navbar-default" [appBetterHighlight]="'red'" defaultColor="yellow"> <!-- You can bind like this too - [defaultColor]="'yellow'" -->
+<nav
+  class="navbar navbar-default"
+  [appBetterHighlight]="'red'"
+  defaultColor="yellow"
+>
+  <!-- You can bind like this too - [defaultColor]="'yellow'" -->
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" routerLink="/">Recipe Book</a>
+      <a
+        class="navbar-brand"
+        routerLink="/"
+      >Recipe Book</a>
     </div>
     <div class="navbar-default">
       <ul class="nav navbar-nav">
@@ -11,11 +19,30 @@
         <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown" appDropdown>
-          <a style="..." class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
+        <ng-template [ngIf]="!authService.isAuthenticated()">
+          <li><a routerLink="/signup">Register</a></li>
+          <li><a routerLink="/signin">Sign In</a></li>
+        </ng-template>
+        <li *ngIf="authService.isAuthenticated()"><a style="cursor: pointer;" (click)="onLogout()">Logout</a></li>
+        <li
+          class="dropdown"
+          appDropdown
+          *ngIf="authService.isAuthenticated()"
+        >
+          <a
+            style="..."
+            class="dropdown-toggle"
+            role="button"
+          >Manage <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a style="cursor: pointer;" (click)="onSaveData()">Save Data</a></li>
-            <li><a style="cursor: pointer;" (click)="onFetchData()">Fetch Data</a></li>
+            <li><a
+                style="cursor: pointer;"
+                (click)="onSaveData()"
+              >Save Data</a></li>
+            <li><a
+                style="cursor: pointer;"
+                (click)="onFetchData()"
+              >Fetch Data</a></li>
           </ul>
         </li>
       </ul>
