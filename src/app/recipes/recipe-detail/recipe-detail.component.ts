@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, Params, Data } from '@angular/router';
 import { ShoppingListService } from '../../shopping-list/shopping-list.service';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
+import { AuthService } from '../../auth/auth.service';
 // import { relative } from 'path';
 
 @Component({
@@ -18,7 +19,8 @@ export class RecipeDetailComponent implements OnInit {
   constructor(private sLService: ShoppingListService,
               private recipeService: RecipeService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private authService: AuthService) { }
 
   ngOnInit() {
     this.route.params.subscribe(

@@ -1,9 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { RecipeService } from '../recipe.service';
 import { Recipe } from '../recipe.model';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-recipe-list',
@@ -16,7 +17,8 @@ export class RecipeListComponent implements OnInit, OnDestroy {
 
   constructor(private recipeService: RecipeService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private authService: AuthService) { }
 
   ngOnInit() {
     this.recipeService.recipesChanged
@@ -33,7 +35,7 @@ export class RecipeListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 
 }
