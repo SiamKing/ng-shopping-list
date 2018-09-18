@@ -19,6 +19,8 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { RecipeNewComponent } from './recipes/recipe-new/recipe-new.component';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
 // import { MaterialModule } from './material.module';
 
 @NgModule({
@@ -37,7 +39,9 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
     DropdownDirective,
     RecipeNewComponent,
     RecipeStartComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    SignupComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
